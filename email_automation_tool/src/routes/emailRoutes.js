@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const gmailController_1 = require("../controllers/gmailController");
+const outlookController_1 = require("../controllers/outlookController");
+const emailController_1 = require("../controllers/emailController");
+const router = (0, express_1.Router)();
+router.get('/google/callback', gmailController_1.googleOAuthCallback);
+router.get('/outlook/callback', outlookController_1.outlookOAuthCallback);
+router.get('/gmail/emails', gmailController_1.fetchGmailEmails);
+router.get('/outlook/emails', outlookController_1.fetchOutlookEmails);
+router.post('/process-email', emailController_1.processEmail);
+exports.default = router;
